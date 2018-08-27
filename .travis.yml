@@ -27,6 +27,10 @@ env:
 install:
   - bundle install
 
+install:
+  - brew update && brew upgrade swiftlint
+  - bundle install
+
 script:
   - set -o pipefail && travis_retry xcodebuild -scheme DeviceKit -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES -enableCodeCoverage YES test
   - bundle exec danger
